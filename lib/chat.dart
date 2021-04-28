@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -22,7 +24,7 @@ class _ChatState extends State<Chat> {
     if (messageController.text.length > 0) {
       await _firestore.collection("messages").add({
         'text': messageController.text,
-        'form': widget.user.email,
+        'from': widget.user.email,
         'date': DateTime.now().toIso8601String().toString(),
       });
       messageController.clear();
@@ -69,18 +71,22 @@ class _ChatState extends State<Chat> {
                     );
                   }
                   List<DocumentSnapshot> docs = snapshot.data.docs;
+                  docs.forEach((element) {
+                    print(jsonEncode(element.data()));
+                  });
                   List<Widget> messages = docs
                       .map((doc) => Message(
-                            from: doc.data()["from"],
+                            from: doc.data()["from"] ?? doc.data()["form"],
                             text: doc.data()["text"],
-                            me: widget.user.email == doc.data()["from"],
+                            me: FirebaseAuth.instance.currentUser.email ==
+                                doc.data()["from"],
                           ))
                       .toList();
 
                   return ListView(
                     shrinkWrap: true,
                     controller: scrollController,
-                    children: [...messages],
+                    children: messages,
                   );
                 },
               ),
@@ -95,7 +101,6 @@ class _ChatState extends State<Chat> {
                           hintText: 'Enter your message',
                           border: const OutlineInputBorder()),
                       onSubmitted: (value) => callBack(),
-                    
                     ),
                   ),
                   sendButton(
@@ -124,7 +129,6 @@ class sendButton extends StatelessWidget {
       color: Colors.orange,
       child: Text(text),
     );
-  
   }
 }
 
@@ -159,4 +163,3 @@ class Message extends StatelessWidget {
     );
   }
 }
- 

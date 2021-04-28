@@ -2,6 +2,7 @@ import 'package:chat2/login.dart';
 import 'package:chat2/page/ICU.dart';
 import 'package:chat2/page/Task_Home.dart';
 import 'package:chat2/page/categories.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'chat.dart';
 import 'registration.dart';
@@ -23,7 +24,9 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData.light(),
-        initialRoute: MyHomepage.id,
+        initialRoute: FirebaseAuth.instance.currentUser == null
+            ? MyHomepage.id
+            : Tasthome.id,
         routes: {
           MyHomepage.id: (context) => MyHomepage(),
           Registration.id: (context) => Registration(),

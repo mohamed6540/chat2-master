@@ -20,10 +20,18 @@ class _LoginState extends State<Login> {
   Key get key => null;
 
   Future<void> LoginUser() async {
-    final User user = (await FirebaseAuth_aut.signInWithEmailAndPassword(
-            email: email, password: password))
-        .user;
-    Navigator.pushNamed(context, Tasthome.id);
+    UserCredential userCredential =
+        await FirebaseAuth_aut.signInWithEmailAndPassword(
+                email: email, password: password)
+            .onError((error, stackTrace) {
+      print('createUserWithEmailAndPassword Error: $error');
+      return null;
+    });
+
+    if (userCredential?.user != null) {
+      Navigator.pushNamed(context, Tasthome.id);
+    }
+
     /*context,MaterialPageRoute(
       //builder: (context) => Tasthome.id
       Navigator.pushNamed(context, Tasthome.id);

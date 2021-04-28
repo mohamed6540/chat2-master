@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'dart:ui';
 import 'package:chat2/chat.dart';
@@ -10,20 +11,22 @@ class MyDrawer extends StatelessWidget {
         children: <Widget>[
           UserAccountsDrawerHeader(
             accountName: Text(
-              "mohamed",
+              FirebaseAuth.instance.currentUser == null
+                  ? "not login"
+                  : FirebaseAuth.instance.currentUser.displayName ?? '',
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            
-          accountEmail: Text("mohamed711@gmail.com",
+            accountEmail: Text(
+                FirebaseAuth.instance.currentUser == null
+                    ? ""
+                    : FirebaseAuth.instance.currentUser.email,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
-                ))
-                , 
-                
+                )),
             currentAccountPicture: CircleAvatar(
               child: Icon(Icons.person),
             ),
@@ -112,7 +115,12 @@ class MyDrawer extends StatelessWidget {
               print("long press");
             },
             onTap: () {
-              Navigator.pushNamed(context, Chat.id);
+              //Navigator.pushNamed(context, Chat.id);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          Chat(user: FirebaseAuth.instance.currentUser)));
             },
           ),
           ListTile(
