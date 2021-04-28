@@ -70,19 +70,24 @@ class HomeState extends State<Tasthome> {
             //radius:Radius.circular(20),
           ),
         ),
+ Container(
+                 height: 30,
+                width: double.infinity,
+              ),
 
 ///////////////////////////////////////////////////////////////
         Container(
           height: 200,
+               
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: <Widget>[
               Container(
                 height: 200,
-                width: 200,
+                width: 250,
                 child: ListTile(
                   title: Image.asset('images/pharmacy.png',
-                      height: 200, width: 200, fit: BoxFit.fill),
+                      height: 170, width: 250, fit: BoxFit.fill),
                   subtitle: Container(
                     child: Text(
                       'pharmacy',
@@ -101,16 +106,16 @@ class HomeState extends State<Tasthome> {
                 ),
               ),
               Container(
-                height: 200,
-                width: 20,
+                 height: 200,
+                width: 30,
               ),
 
               Container(
-                height: 200,
-                width: 200,
+               height: 200,
+                width: 250,
                 child: ListTile(
                   title: Image.asset('images/Operating_theatre.jpg',
-                      height: 200, width: 200, fit: BoxFit.fill),
+                      height: 170, width: 250, fit: BoxFit.fill),
                   subtitle: Container(
                     child: Text(
                       'Operating_theatre',
@@ -130,16 +135,16 @@ class HomeState extends State<Tasthome> {
               ),
 
               Container(
-                height: 200,
-                width: 20,
+                 height: 200,
+                width: 30,
               ),
 
               Container(
-                height: 200,
+               height: 200,
                 width: 250,
                 child: ListTile(
                   title: Image.asset('images/emergency.jpg',
-                      height: 200, width: 250, fit: BoxFit.fill),
+                    height: 170, width: 250, fit: BoxFit.fill),
                   subtitle: Container(
                     child: Text(
                       'E_R',
@@ -158,16 +163,16 @@ class HomeState extends State<Tasthome> {
                 ),
               ),
               Container(
-                height: 200,
-                width: 20,
+               height: 200,
+                width: 30,
               ),
 
               Container(
                 height: 200,
-                width: 200,
+                width: 250,
                 child: ListTile(
                   title: Image.asset('images/laboratory_2.png',
-                      height: 200, width: 200, fit: BoxFit.fill),
+                     height: 170, width: 250, fit: BoxFit.fill),
                   subtitle: Container(
                     child: Text(
                       'laboratory',
@@ -186,16 +191,16 @@ class HomeState extends State<Tasthome> {
                 ),
               ),
               Container(
-                height: 200,
-                width: 20,
-              ),
+              height: 200,
+                width: 30
+                ),
 
               Container(
                 height: 200,
-                width: 300,
+                width: 250,
                 child: ListTile(
                   title: Image.asset('images/opd.jpg',
-                      height: 200, width: 300, fit: BoxFit.fill),
+                     height: 170, width: 250, fit: BoxFit.fill),
                   subtitle: Container(
                     child: Text(
                       'OPD',
@@ -213,13 +218,18 @@ class HomeState extends State<Tasthome> {
                   },
                 ),
               ),
+               Container(
+              height: 200,
+                width: 30,
+              ),
+
                 Container(
-                height: 200,
-                width: 300,
+               height: 200,
+                width: 250,
                 child: ListTile(
                   
                   title: Image.asset('images/icu.jpg',
-                      height: 200, width: 300, fit: BoxFit.fill),
+                      height: 170, width: 250, fit: BoxFit.fill),
                   subtitle: Container(
                     child: Text(
                       'ICU',
@@ -237,12 +247,17 @@ class HomeState extends State<Tasthome> {
                   },
                 ),
               ),
+               Container(
+            height: 200,
+                width: 30,
+              ),
+
   Container(
-                height: 200,
-                width: 200,
+              height: 200,
+                width: 250,
                 child: ListTile(
                   title: Image.asset('images/dialysis.jpg',
-                      height: 200, width: 200, fit: BoxFit.fill),
+                    height: 170, width: 250, fit: BoxFit.fill),
                   subtitle: Container(
                     child: Text(
                       'dialysis',
